@@ -779,6 +779,10 @@ func (s *Store) DeregisterObserver(o *raft.Observer) {
 	s.raft.DeregisterObserver(o)
 }
 
+func (s *Store) LastIndex() uint64 {
+	return s.raft.LastIndex()
+}
+
 type fsmSnapshot struct {
 	database []byte
 	meta     []byte
