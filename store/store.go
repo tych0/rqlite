@@ -783,6 +783,11 @@ func (s *Store) LastIndex() uint64 {
 	return s.raft.LastIndex()
 }
 
+func (s *Store) Barrier(time time.Duration) error {
+	f := s.raft.Barrier(time)
+	return f.Error()
+}
+
 type fsmSnapshot struct {
 	database []byte
 	meta     []byte
